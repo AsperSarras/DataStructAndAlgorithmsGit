@@ -10,12 +10,11 @@ private:
 	T* m_array; // pointer to the beginning of the array
 
 	int m_maxSize;
-	int m_growSize;
-	int m_numElements;
+	int m_growSize=2;
+	int m_numElements=0;
 public:
 	//Constructor
-	Array(int size, int growBy = 1) :
-		m_array(NULL), m_maxSize(0), m_growSize(0), m_numElements(0)
+	Array(int size)
 	{
 		if (size)
 		{
@@ -23,7 +22,7 @@ public:
 			m_array = new T[m_maxSize]; //Dyanmic allocation
 			memset(m_array, 0, sizeof(T) * m_maxSize); //sets a default value to each value of the array
 				// memset(block of memory to fill, value to set, how much of the memory we want to set)
-			m_growSize = ((growBy > 0) ? growBy : 0); // if GrowBy>0 m_growSize=growBy, else m_growSize=0
+			//m_growSize = ((growBy > 0) ? growBy : 0); // if GrowBy>0 m_growSize=growBy, else m_growSize=0
 		}
 	}
 	//Destructor
