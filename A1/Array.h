@@ -7,12 +7,13 @@ class Array
 {
 private:
 	//Var
-	T* m_array; // pointer to the beginning of the array
+	//T* m_array; // pointer to the beginning of the array
 
 	int m_maxSize;
 	int m_growSize=2;
 	int m_numElements=0;
 public:
+	T* m_array; // pointer to the beginning of the array
 	//Constructor
 	Array(int size)
 	{
@@ -115,6 +116,7 @@ public:
 	int getSize() { return m_numElements; }
 	int getMaxSize() { return m_maxSize; }
 	int getGrowSize() { return m_growSize; }
+	T* getArray(int i) { return m_array[i]; }
 
 	//Setters
 	int setGrowSize(int val)
