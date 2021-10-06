@@ -11,6 +11,20 @@ public:
 	UnorderedArray(int size) : Array<T>(size) {}
 	UnorderedArray(UnorderedArray& obj) : Array<T>(obj) {};
 
+	void push(T val) override
+	{
+		assert(Array<T>::m_array != nullptr); //Debuging purposes
+
+		if (Array<T>::getSize() >= Array<T>::getMaxSize()) //Check if the array need to expand
+		{
+			Expand();
+		}
+
+		//If there is an empty space for a value it adds it and and increase the checker for the last place on the array +1
+		Array<T>::m_array[Array<T>::getSize()] = val;
+		Array<T>::setSize(Array<T>::getSize()+1);
+	}
+
 	//------------
 	// Sorting
 	// Bubble Sort -- BigO=O(N^2)
@@ -144,4 +158,29 @@ private:
 			Array<T>::m_array[tempLow + i] = tempArray[i];
 		}
 	}
+
+	private:
+		//Expantion
+		bool Expand()
+		{
+			if (Array<T>::getGrowSize() <= 0)
+			{
+				return false;
+			}
+
+			//Create a new Array
+			T* temp = new T[Array<T>::getMaxSize() + (Array<T>::getGrowSize() * 2)];
+			assert(temp != nullptr);
+			//Copy content from the original array to the new one
+			memcpy(temp, Array<T>::m_array, sizeof(T) * Array<T>::getMaxSize());
+			//Delete old array
+			delete[] Array<T>::m_array;
+			//Clean up variable assignments
+			Array<T>::m_array = temp;
+			temp = nullptr;
+			Array<T>::setMaxSize(Array<T>::getMaxSize() + (Array<T>::getGrowSize() * 2));
+			Array<T>::setGrowSize(Array<T>::getGrowSize() * 2);
+
+			return true;
+		}
 };

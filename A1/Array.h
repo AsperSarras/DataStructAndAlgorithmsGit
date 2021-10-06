@@ -10,8 +10,9 @@ private:
 	//T* m_array; // pointer to the beginning of the array
 
 	int m_maxSize;
-	int m_growSize=2;
+	int m_growSize=1;
 	int m_numElements=0;
+
 public:
 	T* m_array; // pointer to the beginning of the array
 	//Constructor
@@ -36,20 +37,22 @@ public:
 		}
 	}
 
-	//Insertion (for Unordered Array -- BigO is O(1)
-	void push(T val)
-	{
-		assert(m_array != nullptr); //Debuging purposes
+	virtual void push(T val) = 0;
 
-		if (m_numElements >= m_maxSize) //Check if the array need to expand
-		{
-			Expand();
-		}
+	////Insertion (for Unordered Array -- BigO is O(1)
+	//void push(T val)
+	//{
+	//	assert(m_array != nullptr); //Debuging purposes
 
-		//If there is an empty space for a value it adds it and and increase the checker for the last place on the array +1
-		m_array[m_numElements] = val;
-		m_numElements++;
-	}
+	//	if (m_numElements >= m_maxSize) //Check if the array need to expand
+	//	{
+	//		Expand();
+	//	}
+
+	//	//If there is an empty space for a value it adds it and and increase the checker for the last place on the array +1
+	//	m_array[m_numElements] = val;
+	//	m_numElements++;
+	//}
 
 	//Deletetion
 	void pop()
@@ -116,38 +119,21 @@ public:
 	int getSize() { return m_numElements; }
 	int getMaxSize() { return m_maxSize; }
 	int getGrowSize() { return m_growSize; }
-	T* getArray(int i) { return m_array[i]; }
 
 	//Setters
-	int setGrowSize(int val)
+	void setGrowSize(int val)
 	{
-		assert(val >= 0);
 		m_growSize = val;
 	}
 
-	//Private Functions
-private:
-	//Expantion
-	bool Expand()
+	void setSize(int val)
 	{
-		if (m_growSize <= 0)
-		{
-			return false;
-		}
+		m_numElements = val;
+	}
 
-		//Create a new Array
-		T* temp = new T[m_maxSize + m_growSize];
-		assert(temp != nullptr);
-		//Copy content from the original array to the new one
-		memcpy(temp, m_array, sizeof(T) * m_maxSize);
-		//Delete old array
-		delete[] m_array;
-		//Clean up variable assignments
-		m_array = temp;
-		temp = nullptr;
-		m_maxSize += m_growSize;
-
-		return true;
+	void setMaxSize(int val)
+	{
+		m_maxSize = val;
 	}
 };
 

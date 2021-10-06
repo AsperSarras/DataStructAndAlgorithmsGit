@@ -14,18 +14,55 @@ int main()
 	ar.push(23);
 	ar.push(89);
 	ar.push(11);
-	
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+	ar.push(11);
+	cout << ar.getMaxSize() << endl;
+
 	cout << "Bubble sort" << endl;
 
 	cout << "Before Sorting:";
 
-	for (int i = 0; i < ar.getMaxSize(); i++)
+	for (int i = 0; i < ar.getSize(); i++)
 	{
 		cout << " " << ar[i];
 	}
 	cout << endl;
 
-	ar.insertionSort();
+	ar.mergeSort();
 
 	cout << "After Sorting:";
 	for (int i = 0; i < ar.getSize(); i++)
